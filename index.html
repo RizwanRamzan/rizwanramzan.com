@@ -1,1536 +1,640 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Rizwan || Personal Portfolio</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon">
-    <!-- CSS 
-    ============================================ -->
-    <link rel="stylesheet" href="./css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/vendor/slick.css">
-    <link rel="stylesheet" href="./css/vendor/slick-theme.css">
-    <link rel="stylesheet" href="./css/vendor/aos.css">
-    <link rel="stylesheet" href="./css/plugins/feature.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rizwan Ramzan — Full Stack Engineer & Tech Consultant</title>
+<meta name="description" content="Full Stack Engineer specializing in AI Solutions, Healthcare Software, SaaS & Web Applications. 6+ years experience, global clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+/* ===== TOKENS ===== */
+:root[data-theme="dark"] {
+  --bg:#07070d; --bg2:#0f0f1a; --bg3:#161624;
+  --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.12);
+  --text:#f0f0f8; --muted:#8080a8; --muted2:#5a5a7a;
+  --accent:#4f8eff; --accent2:#a78bfa; --accent3:#38bdf8;
+  --glow:rgba(79,142,255,0.15); --glow2:rgba(167,139,250,0.1);
+  --card:rgba(255,255,255,0.04); --card2:rgba(255,255,255,0.07);
+  --nav:rgba(7,7,13,0.88);
+  --grad:linear-gradient(135deg,#4f8eff,#a78bfa);
+}
+:root[data-theme="light"] {
+  --bg:#f4f4fc; --bg2:#ffffff; --bg3:#eaeaf5;
+  --border:rgba(0,0,0,0.08); --border2:rgba(0,0,0,0.14);
+  --text:#0d0d1a; --muted:#6060a0; --muted2:#9090b8;
+  --accent:#3b6fdd; --accent2:#7c3aed; --accent3:#0284c7;
+  --glow:rgba(59,111,221,0.1); --glow2:rgba(124,58,237,0.08);
+  --card:rgba(0,0,0,0.03); --card2:rgba(0,0,0,0.06);
+  --nav:rgba(244,244,252,0.9);
+  --grad:linear-gradient(135deg,#3b6fdd,#7c3aed);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;transition:background .3s,color .3s;}
 
-    <!-- Style css -->
-    <link rel="stylesheet" href="./css/style.css">
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:var(--nav);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .3s;}
+/* RR Logo SVG */
+.nav-logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
+.nav-logo svg{width:38px;height:38px;flex-shrink:0;}
+.nav-logo-text{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);font-size:.85rem;font-weight:500;text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;gap:.75rem;align-items:center;}
+.theme-btn{width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.9rem;transition:all .2s;}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+.hire-btn{background:var(--grad);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;text-decoration:none;transition:opacity .2s,transform .2s;white-space:nowrap;}
+.hire-btn:hover{opacity:.85;transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+.mobile-nav{display:none;position:fixed;top:66px;left:0;right:0;z-index:199;background:var(--bg2);border-bottom:1px solid var(--border);padding:1.5rem 6%;flex-direction:column;gap:.75rem;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{color:var(--text);text-decoration:none;font-weight:500;padding:.6rem 0;border-bottom:1px solid var(--border);font-size:1rem;}
+
+/* ===== HERO ===== */
+#home{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:90px 6% 60px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg-orb1{position:absolute;width:600px;height:600px;right:-100px;top:-100px;background:radial-gradient(circle,rgba(79,142,255,.12),transparent 70%);border-radius:50%;}
+.hero-bg-orb2{position:absolute;width:500px;height:500px;left:-150px;bottom:-100px;background:radial-gradient(circle,rgba(167,139,250,.08),transparent 70%);border-radius:50%;}
+.hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(79,142,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,255,.04) 1px,transparent 1px);background-size:60px 60px;}
+
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:5rem;align-items:center;max-width:1100px;width:100%;position:relative;z-index:1;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:var(--card);border:1px solid var(--border2);border-radius:100px;padding:.35rem .9rem;font-size:.75rem;color:var(--accent);margin-bottom:1.4rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.hero-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.4);}50%{opacity:.6;box-shadow:0 0 0 6px rgba(74,222,128,0);}}
+h1.hero-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:1.2rem;}
+.hero-h .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{color:var(--muted);font-size:1.05rem;max-width:480px;margin-bottom:1.8rem;line-height:1.75;}
+.hero-stats{display:flex;gap:2rem;margin-bottom:2rem;flex-wrap:wrap;}
+.h-stat{display:flex;flex-direction:column;}
+.h-stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.h-stat-label{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.btn-p{background:var(--grad);color:#fff;padding:.75rem 1.6rem;border-radius:10px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(79,142,255,.3);}
+.btn-g{color:var(--text);padding:.75rem 1.6rem;border-radius:10px;font-weight:600;font-size:.9rem;text-decoration:none;border:1px solid var(--border2);background:var(--card);transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-g:hover{border-color:var(--accent);color:var(--accent);}
+.hero-socials{display:flex;gap:.6rem;}
+.soc{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:.95rem;transition:all .2s;}
+.soc:hover{border-color:var(--accent);color:var(--accent);background:var(--glow);}
+
+/* Photo */
+.hero-photo-wrap{position:relative;flex-shrink:0;}
+.hero-photo-glow{position:absolute;inset:-20px;border-radius:50%;background:radial-gradient(circle,rgba(79,142,255,.2),transparent 70%);animation:glow-pulse 3s ease-in-out infinite;}
+@keyframes glow-pulse{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.05);}}
+.hero-photo{width:300px;height:300px;border-radius:50%;object-fit:cover;object-position:top center;display:block;position:relative;z-index:1;border:2px solid rgba(79,142,255,.3);}
+.hero-photo-ring{position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(79,142,255,.25);z-index:2;animation:spin 20s linear infinite;}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+/* ===== SECTION BASE ===== */
+.sec{padding:5rem 6%;max-width:1200px;margin:0 auto;}
+.sec-full{padding:5rem 0;border-top:1px solid var(--border);}
+.sec-inner{max-width:1200px;margin:0 auto;padding:0 6%;}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;font-weight:700;color:var(--accent);margin-bottom:.6rem;}
+.sec-h{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.9rem;}
+.sec-sub{color:var(--muted);max-width:480px;font-size:.95rem;}
+.sec-head{margin-bottom:3rem;}
+
+/* ===== SERVICES ===== */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.svc-card{background:var(--bg2);padding:2rem;transition:background .2s;position:relative;overflow:hidden;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transition:transform .3s;}
+.svc-card:hover{background:var(--bg3);}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-icon{width:46px;height:46px;border-radius:12px;background:var(--glow);border:1px solid rgba(79,142,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem;}
+.svc-title{font-weight:700;font-size:1rem;margin-bottom:.5rem;}
+.svc-desc{font-size:.85rem;color:var(--muted);line-height:1.65;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.75rem;}
+.svc-tag{font-size:.7rem;background:var(--card);border:1px solid var(--border);padding:.15rem .5rem;border-radius:4px;color:var(--muted2);font-weight:500;}
+
+/* ===== WHY US ===== */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:3rem;}
+.why-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.5rem;text-align:center;transition:border-color .2s,transform .25s;}
+.why-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+.why-icon{font-size:2rem;margin-bottom:.75rem;display:block;}
+.why-title{font-weight:700;font-size:.95rem;margin-bottom:.4rem;}
+.why-desc{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+/* ===== INDUSTRIES ===== */
+.ind-chips{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem;}
+.ind-chip{background:var(--bg2);border:1px solid var(--border);padding:.5rem 1rem;border-radius:100px;font-size:.85rem;font-weight:600;color:var(--text);transition:all .2s;cursor:default;}
+.ind-chip:hover{border-color:var(--accent);color:var(--accent);background:var(--glow);}
+
+/* ===== PROCESS ===== */
+.process-row{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:3rem;}
+.proc-step{background:var(--bg2);padding:1.75rem 1.25rem;position:relative;transition:background .2s;}
+.proc-step:hover{background:var(--bg3);}
+.proc-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.5rem;}
+.proc-title{font-weight:700;font-size:.9rem;margin-bottom:.35rem;}
+.proc-desc{font-size:.78rem;color:var(--muted);line-height:1.5;}
+
+/* ===== PORTFOLIO ===== */
+.port-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:3rem;}
+.port-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:all .25s;position:relative;overflow:hidden;}
+.port-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);opacity:0;transition:opacity .3s;}
+.port-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 16px 40px rgba(79,142,255,.1);}
+.port-card:hover::before{opacity:1;}
+.port-cat{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent2);font-weight:700;margin-bottom:.5rem;}
+.port-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.port-desc{font-size:.83rem;color:var(--muted);line-height:1.6;}
+
+/* ===== TESTIMONIALS ===== */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-top:3rem;}
+.testi-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.75rem;position:relative;}
+.testi-quote{font-size:2.5rem;line-height:1;color:var(--accent);opacity:.3;font-family:Georgia,serif;margin-bottom:.5rem;}
+.testi-text{font-size:.9rem;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:1rem;}
+.testi-stars{color:#f59e0b;font-size:.85rem;letter-spacing:.1em;}
+
+/* ===== CTA BANNER ===== */
+.cta-banner{background:var(--grad);border-radius:24px;padding:3.5rem 3rem;text-align:center;margin:5rem 6%;max-width:1100px;margin-left:auto;margin-right:auto;position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:rgba(255,255,255,.08);border-radius:50%;}
+.cta-banner h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;color:#fff;margin-bottom:.75rem;position:relative;}
+.cta-banner p{color:rgba(255,255,255,.8);max-width:440px;margin:0 auto 2rem;position:relative;font-size:.95rem;}
+.cta-banner .btn-white{background:#fff;color:#3b6fdd;padding:.85rem 2rem;border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem;}
+.cta-banner .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2);}
+
+/* ===== CONTACT ===== */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem;align-items:start;}
+.ci{display:flex;gap:1rem;align-items:flex-start;padding:1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;margin-bottom:1rem;transition:border-color .2s;}
+.ci:hover{border-color:var(--accent);}
+.ci-icon{width:40px;height:40px;min-width:40px;background:var(--glow);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--accent);}
+.ci-label{font-size:.72rem;color:var(--muted);margin-bottom:.15rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+.ci-val{font-weight:600;font-size:.92rem;}
+.ci-val a{color:var(--text);text-decoration:none;}
+.ci-val a:hover{color:var(--accent);}
+.cf{display:flex;flex-direction:column;gap:.9rem;}
+.fg{display:flex;flex-direction:column;gap:.35rem;}
+.fg label{font-size:.78rem;font-weight:600;color:var(--muted);}
+.fg input,.fg textarea{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--text);font-family:'Inter',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+.fg input:focus,.fg textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow);}
+.fg textarea{resize:vertical;min-height:120px;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.sub-btn{background:var(--grad);color:#fff;border:none;padding:.85rem 2rem;border-radius:10px;font-size:.92rem;font-weight:700;cursor:pointer;width:100%;font-family:'Inter',sans-serif;transition:all .2s;}
+.sub-btn:hover{opacity:.88;transform:translateY(-1px);}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--border);padding:2.5rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap;max-width:1200px;margin:0 auto;}
+.footer-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:.95rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.footer-copy{color:var(--muted);font-size:.82rem;}
+.footer-links{display:flex;gap:1.25rem;}
+.footer-links a{color:var(--muted);font-size:.82rem;text-decoration:none;transition:color .2s;}
+.footer-links a:hover{color:var(--accent);}
+
+/* ===== EXPERIENCE TIMELINE ===== */
+.tl{margin-top:3rem;position:relative;}
+.tl::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border);}
+.tli{padding-left:2rem;padding-bottom:2.5rem;position:relative;}
+.tli::before{content:'';position:absolute;left:-4px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px var(--glow);}
+.tl-period{font-size:.72rem;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem;}
+.tl-role{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.2rem;}
+.tl-co{color:var(--muted);font-size:.88rem;margin-bottom:.65rem;}
+.tl-txt{font-size:.87rem;color:var(--muted);line-height:1.7;max-width:580px;}
+.tl-chips{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.65rem;}
+.tl-chip{font-size:.7rem;background:var(--card);border:1px solid var(--border);padding:.15rem .5rem;border-radius:4px;color:var(--muted2);font-weight:500;}
+
+/* ===== SKILLS ===== */
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:3rem;}
+.sk-group{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:border-color .2s;}
+.sk-group:hover{border-color:var(--accent);}
+.sk-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:700;margin-bottom:1rem;}
+.sk-chips{display:flex;flex-wrap:wrap;gap:.4rem;}
+.sk-chip{background:var(--bg3);border:1px solid var(--border);padding:.28rem .62rem;border-radius:6px;font-size:.8rem;color:var(--text);font-weight:500;transition:all .2s;}
+.sk-chip:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center;gap:2.5rem;}
+  .hero-photo-wrap{order:-1;display:flex;justify-content:center;}
+  .hero-h,.hero-sub,.hero-stats,.hero-cta,.hero-socials{margin-left:auto;margin-right:auto;}
+  .hero-stats,.hero-cta,.hero-socials{justify-content:center;}
+  .hero-sub{max-width:100%;}
+  .process-row{grid-template-columns:repeat(3,1fr);}
+  .contact-wrap{grid-template-columns:1fr;gap:2rem;}
+  .form-row2{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:1rem;text-align:center;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .hire-btn{display:none;}
+  .hamburger{display:flex;}
+  .process-row{grid-template-columns:repeat(2,1fr);}
+  .hero-photo{width:240px;height:240px;}
+}
+</style>
 </head>
+<body>
 
-<body class="template-color-1 spybody white-version" data-spy="scroll" data-target=".navbar-example2" data-offset="150">
+<!-- NAV -->
+<nav id="navbar">
+  <!-- RR Logo -->
+  <a class="nav-logo" href="#home">
+    <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="38" height="38" rx="10" fill="url(#rr_grad)"/>
+      <text x="5" y="27" font-family="'Space Grotesk', Arial, sans-serif" font-weight="800" font-size="18" fill="white" letter-spacing="-1">RR</text>
+      <defs>
+        <linearGradient id="rr_grad" x1="0" y1="0" x2="38" y2="38">
+          <stop offset="0%" stop-color="#4f8eff"/>
+          <stop offset="100%" stop-color="#a78bfa"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <span class="nav-logo-text">Rizwan Ramzan</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" id="themeToggle">🌙</button>
+    <a href="https://www.upwork.com/freelancers/~017322c0ca472efe23?viewMode=1" target="_blank" class="hire-btn">✦ Hire Me</a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-    <!-- Start Header -->
-    <header class="rn-header haeder-default black-logo-version header--fixed header--sticky">
-        <div class="header-wrapper rn-popup-mobile-menu m--0 row align-items-center">
-            <!-- Start Header Left -->
-            <div class="col-lg-2 col-6">
-                <div class="header-left">
-                    <div class="logo">
-                        <a href="/">
-                            <h4 style="color: #33435C;"><b>Rizwan</b></h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- End Header Left -->
-            <!-- Start Header Center -->
-            <div class="col-lg-10 col-6">
-                <div class="header-center">
-                    <nav id="sideNav" class="mainmenu-nav navbar-example2 d-none d-xl-block">
-                        <!-- Start Mainmanu Nav -->
-                        <ul class="primary-menu nav nav-pills">
-                            <li class="nav-item"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#features">Features</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#portfolio">Portfolio</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#testimonial">Testimonial</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#pricing">Pricing</a></li>
-                            <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
-                        </ul>
-                        <!-- End Mainmanu Nav -->
-                    </nav>
-                    <!-- Start Header Right  -->
-                    <div class="header-right">
-                        <a class="rn-btn" target="_blank"
-                            href="https://www.fiverr.com/rizwanramzan826?up_rollout=true"><span class="hire-me">Hire me</span></a>
-                        <div class="hamberger-menu d-block d-xl-none">
-                            <i id="menuBtn" class="feather-menu humberger-menu"></i>
-                        </div>
-                        <div class="close-menu d-block">
-                            <span class="closeTrigger">
-                                <i data-feather="x"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <!-- End Header Right  -->
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#experience" onclick="closeMob()">Experience</a>
+  <a href="#portfolio" onclick="closeMob()">Portfolio</a>
+  <a href="#process" onclick="closeMob()">Process</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="https://www.upwork.com/freelancers/~017322c0ca472efe23?viewMode=1" target="_blank">Hire Me on Upwork ↗</a>
+</div>
 
-                </div>
-            </div>
-            <!-- End Header Center -->
+<!-- ===== HERO ===== -->
+<section id="home" style="padding-top:90px;padding-bottom:60px;min-height:100vh;display:flex;align-items:center;justify-content:center;padding-left:6%;padding-right:6%;">
+  <div class="hero-bg">
+    <div class="hero-bg-orb1"></div>
+    <div class="hero-bg-orb2"></div>
+    <div class="hero-grid-lines"></div>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="hero-dot"></span>
+        Available for New Projects
+      </div>
+      <h1 class="hero-h">
+        Transforming Ideas Into<br><span class="grad">Powerful Digital Solutions</span>
+      </h1>
+      <p class="hero-sub">
+        Full Stack Engineer & Tech Consultant helping startups, healthcare companies, fintech businesses, and enterprises build scalable web apps, AI solutions, and custom software products.
+      </p>
+      <div class="hero-stats">
+        <div class="h-stat">
+          <span class="h-stat-num" data-count="6">0+</span>
+          <span class="h-stat-label">Years Experience</span>
         </div>
-    </header>
-    <!-- End Header Area -->
-    <!-- Start Popup Mobile Menu  -->
-    <div class="popup-mobile-menu">
-        <div class="inner">
-            <div class="menu-top">
-                <div class="menu-header">
-                    <a class="logo" href="#">
-                        <!-- <img src="/images/" alt="Personal Portfolio"> -->
-                    </a>
-                    <div class="close-button" id="close-button">
-                        <button class="close-menu-activation close"><i data-feather="x"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <ul class="primary-menu nav nav-pills">
-                    <li class="nav-item"><a class="nav-link smoth-animation active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#features">Features</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#resume">Resume</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link smoth-animation" href="#contacts">Contact</a></li>
-                </ul>
-                <!-- social sharea area -->
-                <div class="social-share-style-1 mt--40">
-                    <span class="title">find me</span>
-                    <ul class="social-share d-flex liststyle">
-                        <li class="facebook"><a href="https://www.facebook.com/profile.php?id=100043181080105"><i
-                                    data-feather="facebook"></i></a>
-                        </li>
-                        <li class="instagram"><a href="https://www.instagram.com/rizwan_ramzan0/"><i
-                                    data-feather="instagram"></i></a>
-                        </li>
-                        <li class="linkedin"><a href="https://www.linkedin.com/in/rizwan-ramzan-46bbba201/"><i
-                                    data-feather="linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- end -->
-            </div>
+        <div class="h-stat">
+          <span class="h-stat-num" data-count="50">0+</span>
+          <span class="h-stat-label">Projects Delivered</span>
         </div>
+        <div class="h-stat">
+          <span class="h-stat-num" data-count="15">0+</span>
+          <span class="h-stat-label">Happy Clients</span>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-p">📅 Book Free Consultation</a>
+        <a href="#portfolio" class="btn-g">View Portfolio →</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/rizwan-ramzan/" target="_blank" class="soc" title="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://www.upwork.com/freelancers/~017322c0ca472efe23?viewMode=1" target="_blank" class="soc" title="Upwork">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+        </a>
+        <a href="https://github.com/" target="_blank" class="soc" title="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/rizwan.ramzan.official" target="_blank" class="soc" title="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/rizwan.ramzan.official/" target="_blank" class="soc" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=923091435290" target="_blank" class="soc" title="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
     </div>
-    <!-- End Popup Mobile Menu  -->
-
-
-
-
-    <main class="main-page-wrapper">
-
-        <!-- Start Slider Area -->
-        <div id="home" class="rn-slider-area">
-            <div class="slide slider-style-1">
-                <div class="container">
-                    <div class="row row--30 align-items-center">
-                        <div class="order-2 order-lg-1 col-lg-7 mt_md--50 mt_sm--50 mt_lg--30 wow animate__fadeInLeft"
-                            data-wow-delay=".2s">
-                            <div class="content">
-                                <div class="inner">
-                                    <span class="subtitle">Welcome to my world</span>
-                                    <h1 class="title"><span class="hi">Hi, I’m </span><span class="name">Muhammad
-                                            Rizwan</span><br>
-                                        <span class="header-caption" id="page-top">
-                                            <!-- type headline start-->
-                                            <span class="cd-headline clip is-full-width">
-                                                <span>a </span>
-                                                <!-- ROTATING TEXT -->
-                                                <span class="cd-words-wrapper">
-                                                    <b class="is-visible">Web Developer.</b>
-                                                    <b class="is-hidden">Mern Stack Developer</b>
-                                                    <b class="is-hidden">Software Developer.</b>
-                                                </span>
-                                            </span>
-                                            <!-- type headline end -->
-                                        </span>
-                                    </h1>
-
-                                    <div>
-                                        <p class="description">
-                                            I am a Full Stack Developer with 3 years of experience. My passion lies in
-                                            creating robust web applications using HTML, CSS, JavaScript, React,
-                                            Angular, Bootstrap, Tailwind CSS, WordPress, Node.js, and Express.js. With
-                                            attention to detail and a dedication to delivering high-quality work, I aim
-                                            to create user-friendly experiences.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-12">
-                                        <div class="social-share-inner-left">
-                                            <span class="title">find me on</span>
-                                            <ul class="social-share d-flex liststyle">
-                                                <li class="facebook"><a
-                                                        href="https://www.facebook.com/profile.php?id=100043181080105"><i
-                                                            data-feather="facebook"></i></a>
-                                                </li>
-                                                <li class="instagram"><a
-                                                        href="https://www.instagram.com/rizwan_ramzan0/"><i
-                                                            data-feather="instagram"></i></a>
-                                                </li>
-                                                <li class="linkedin"><a
-                                                        href="https://www.linkedin.com/in/rizwan-ramzan-46bbba201/"><i
-                                                            data-feather="linkedin"></i></a>
-                                                </li>
-                                                <li class="whatsapp">
-                                                    <a href="https://api.whatsapp.com/send?phone=923091435290">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                            fill="currentColor" class="bi bi-whatsapp"
-                                                            viewBox="0 0 16 16">
-                                                            <path
-                                                                d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-                                                        </svg>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="order-1 order-lg-2 col-lg-5 mb-5 wow animate__fadeInRight" data-wow-delay=".2s">
-                            <div class="thumbnail">
-                                <div class="inner">
-                                    <img class="mainImage" src="./images/Rizwan.png" alt="Personal Portfolio Images">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Slider Area -->
-
-        <!-- Start Service Area -->
-        <div class="rn-service-area rn-section-gap section-separator" id="features">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-left" data-aos="fade-up" data-aos-duration="500"
-                            data-aos-delay="100" data-aos-once="true">
-                            <h2 class="title">What I Do</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row row--25 mt_md--10 mt_sm--10">
-
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="layout"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#">Web Development</a></h4>
-                                    <p class="description">
-                                        I have 3 years of experience in web designing and development
-                                    </p>
-                                    <a class="read-more-button">
-                                        For front end development I use html, css, js, jquery, bootstrap, tailwind css,
-                                        semantic etc.
-                                        For the backend I use node.js with mongoDb. And for the frontend Framework I use
-                                        react.
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="over-link"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="book-open"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#">Software Development</a></h4>
-                                    <p class="description">I have 3 years of experience in C# applications</p>
-                                    <a class="read-more-button">
-                                        I have done many projects of C# winform applications. I use sql server as the
-                                        data base.
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="over-link"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="camera"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#">Photo Editing</a></h4>
-                                    <p class="description">I have almost 3 years of experience in Photo editing</p>
-                                    <a class="read-more-button">
-                                        I am an expert in Adobe Photoshop, Adobe lightroom and luminar. I have a
-                                        instagram page as well where I post my edits.
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="over-link"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="tv"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#">Video Editor</a></h4>
-                                    <p class="description">I have almost 1.5 year of experience in video editing.
-                                    </p>
-                                    <a class="read-more-button">
-                                        I have a good grip in Adobe premiere pro and Filmora. I have started a youtube
-                                        channel recently where I post my edits.
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="over-link"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="box"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#">Graphics Designer</a></h4>
-                                    <p class="description">I have 2.5 years of experience in Graphics designing.</p>
-                                    <a class="read-more-button">
-                                        I use Adobe illustrator, figma for UX/UI, graphics and logo designing. If my
-                                        website and softwares need any kind of graphics and logos I make it.
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="over-link"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-                    <!-- Start Single Service -->
-                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-sm-12 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-service">
-                            <div class="inner">
-                                <div class="icon">
-                                    <i data-feather="slack"></i>
-                                </div>
-                                <div class="content">
-                                    <h4 class="title"><a href="#">Expert in Different languages</a></h4>
-                                    <p class="description"> Have good grip in Python, PHP, javaScript , TypeScript and
-                                        many more</p>
-                                    <a class="read-more-button">
-                                        I have done multiple projects in these languages. I have made a voice assistant
-                                        and a music downloading (using web scrapping) script in python.
-                                    </a>
-                                </div>
-                            </div>
-                            <a class="over-link"></a>
-                        </div>
-                    </div>
-                    <!-- End SIngle Service -->
-
-                </div>
-            </div>
-        </div>
-        <!-- End Service Area  -->
-
-        <!-- Start Portfolio Area -->
-        <div class="rn-portfolio-area rn-section-gap section-separator" id="portfolio">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true"
-                            class="section-title text-center">
-                            <h2 class="title">My Portfolio</h2>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row row--25 mt--10 mt_md--10 mt_sm--10">
-
-                    <!-- Start Single Portfolio -->
-                    <div data-aos="fade-up" data-aos-delay="300" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-portfolio" data-toggle="modal" data-target="#exampleModalCenter">
-                            <div class="inner">
-                                <div class="thumbnail">
-                                    <a href="javascript:void(0)">
-                                        <img src="./images/portfolio/portfolio-02.jpg" alt="Personal Portfolio Images">
-
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="category-info">
-                                        <div class="category-list">
-                                            <a href="javascript:void(0)">Web Development</a>
-                                        </div>
-                                        <div class="meta">
-                                            <span><a href="javascript:void(0)"><i class="feather-heart"></i></a>
-                                                750</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="title"><a href="https://kunshuisoord.com/" target="_blank">Kunshuis
-                                            (Where designer design and sell their designs)<i
-                                                class="feather-arrow-up-right"></i></a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Portfolio -->
-
-                    <!-- Start Single Portfolio -->
-                    <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-portfolio" data-toggle="modal" data-target="#exampleModalCenter">
-                            <div class="inner">
-                                <div class="thumbnail">
-                                    <a href="javascript:void(0)">
-                                        <img src="./images/portfolio/portfolio-01.jpg" alt="Personal Portfolio Images">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="category-info">
-                                        <div class="category-list">
-                                            <a href="javascript:void(0)">Web Development</a>
-                                        </div>
-                                        <div class="meta">
-                                            <span><a href="javascript:void(0)"><i class="feather-heart"></i></a>
-                                                600</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="title"><a href="https://traditional-bakers.herokuapp.com/">The Bakery
-                                            E-commerce store <i class="feather-arrow-up-right"></i></a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Portfolio -->
-
-                    <!-- Start Single Portfolio -->
-                    <div data-aos="fade-up" data-aos-delay="500" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-portfolio" data-toggle="modal" data-target="#exampleModalCenter">
-                            <div class="inner">
-                                <div class="thumbnail">
-                                    <a href="javascript:void(0)">
-                                        <img src="./images/portfolio/portfolio-03.jpg" alt="Personal Portfolio Images">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="category-info">
-                                        <div class="category-list">
-                                            <a href="javascript:void(0)">Software Development</a>
-                                        </div>
-                                        <div class="meta">
-                                            <span><a href="javascript:void(0)"><i class="feather-heart"></i></a>
-                                                630</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="title"><a href="javascript:void(0)">The Bakery Point of sale software.
-                                            <i class="feather-arrow-up-right"></i></a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Portfolio -->
-
-                    <!-- Start Single Portfolio -->
-                    <div data-aos="fade-up" data-aos-delay="100" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-portfolio" data-toggle="modal" data-target="#exampleModalCenter">
-                            <div class="inner">
-                                <div class="thumbnail">
-                                    <a href="javascript:void(0)">
-                                        <img src="./images/portfolio/portfolio-04.jpg" alt="Personal Portfolio Images">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="category-info">
-                                        <div class="category-list">
-                                            <a href="javascript:void(0)">Web development/a>
-                                        </div>
-                                        <div class="meta">
-                                            <span><a href="javascript:void(0)"><i class="feather-heart"></i></a>
-                                                360</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="title"><a href="javascript:void(0)">The admin dashboard with dark mode<i
-                                                class="feather-arrow-up-right"></i></a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Portfolio -->
-
-                    <!-- Start Single Portfolio -->
-                    <div data-aos="fade-up" data-aos-delay="300" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-portfolio" data-toggle="modal" data-target="#exampleModalCenter">
-                            <div class="inner">
-                                <div class="thumbnail">
-                                    <a href="javascript:void(0)">
-                                        <img src="./images/portfolio/portfolio-05.jpg" alt="Personal Portfolio Images">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="category-info">
-                                        <div class="category-list">
-                                            <a href="javascript:void(0)">Logo Design</a>
-                                        </div>
-                                        <div class="meta">
-                                            <span><a href="javascript:void(0)"><i class="feather-heart"></i></a>
-                                                280</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="title"><a href="javascript:void(0)">Logo Designed for my gaming youtube
-                                            channel<i class="feather-arrow-up-right"></i></a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Portfolio -->
-
-                    <!-- Start Single Portfolio -->
-                    <div data-aos="fade-up" data-aos-delay="500" data-aos-once="true"
-                        class="col-lg-6 col-xl-4 col-md-6 col-12 mt--50 mt_md--30 mt_sm--30">
-                        <div class="rn-portfolio" data-toggle="modal" data-target="#exampleModalCenter">
-                            <div class="inner">
-                                <div class="thumbnail">
-                                    <a href="javascript:void(0)">
-                                        <img src="./images/portfolio/portfolio-06.jpg" alt="Personal Portfolio Images">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="category-info">
-                                        <div class="category-list">
-                                            <a href="javascript:void(0)">Video Edit</a>
-                                        </div>
-                                        <div class="meta">
-                                            <span><a href="javascript:void(0)"><i class="feather-heart"></i></a>
-                                                690</span>
-                                        </div>
-                                    </div>
-                                    <h4 class="title"><a href="javascript:void(0)">Before after of the video editing
-                                            colour grading<i class="feather-arrow-up-right"></i></a></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Portfolio -->
-                </div>
-            </div>
-        </div>
-        <!-- End portfolio Area -->
-
-        <!-- Start Resume Area -->
-        <div class="rn-resume-area rn-section-gap section-separator" id="resume">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true"
-                            class="section-title text-center">
-                            <span class="subtitle">3+ Years of Experience</span>
-                            <h2 class="title">My Resume</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt--45">
-                    <div class="col-lg-12">
-                        <ul data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true"
-                            class="rn-nav-list nav nav-tabs" id="myTabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="education-tab" data-toggle="tab" href="#education"
-                                    role="tab" aria-controls="education" aria-selected="true">education</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " id="professional-tab" data-toggle="tab" href="#professional"
-                                    role="tab" aria-controls="professional" aria-selected="false">professional
-                                    Skills</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="certificate-tab" data-toggle="tab" href="#certificate"
-                                    role="tab" aria-controls="certificate" aria-selected="false">Certificates</a>
-                            </li>
-                        </ul>
-                        <!-- Start Tab Content Wrapper  -->
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true"
-                            class="rn-nav-content tab-content" id="myTabContents">
-
-                            <!-- Start Single Tab  -->
-                            <div class="tab-pane show active fade single-tab-area" id="education" role="tabpanel"
-                                aria-labelledby="education-tab">
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row">
-                                        <!-- Start Skill List Area  -->
-                                        <div class="col-lg-12 col-md-12 col-12">
-                                            <div class="content">
-                                                <span class="subtitle">2018 - 2022</span>
-                                                <h4 class="maintitle">Education</h4>
-                                                <div class="experience-list">
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Bachelor of Computer Science (ADP)</h4>
-                                                                    <span>Virtual University of Pakistan, Lahore Campus
-                                                                        (2021 - 2023)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>2.94/4 CGPA</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">I have done Bachelors in Computer
-                                                                Science from Virtual University of Pakistan, Lahore
-                                                                Campus with the CGPA of 2.94</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>I-com. Economics</h4>
-                                                                    <span>Govt Degree College Model Town Lahore College,
-                                                                        (2019 - 2021)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">I have done I-com. Economics from
-                                                                Degree College, Lahore Campus</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Matric</h4>
-                                                                    <span>S_M_S School (2017 - 2019)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">I have done Matric from S_M_S School
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab  -->
-
-                            <!-- Start Single Tab  -->
-                            <div class="tab-pane fade " id="professional" role="tabpanel"
-                                aria-labelledby="professional-tab">
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row row--40">
-
-                                        <!-- Start Single Progressbar  -->
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <div class="progress-wrapper">
-                                                <div class="content">
-                                                    <span class="subtitle">Features</span>
-                                                    <h4 class="maintitle">Photo Editing, Graphics & Video Editing </h4>
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">ADOBE PHOTOSHOP</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.5s" data-wow-delay=".3s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">ADOBE PREMIERE PRO</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.6s" data-wow-delay=".4s"
-                                                                role="progressbar" style="width: 70%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">70%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">ADOBE lIGHTROOM</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.7s" data-wow-delay=".5s"
-                                                                role="progressbar" style="width: 95%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">95%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">ADOBE ILLUSTRATOR</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.8s" data-wow-delay=".6s"
-                                                                role="progressbar" style="width: 80%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">80%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">FILMORA</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.9s" data-wow-delay=".7s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Progressbar  -->
-
-                                        <!-- Start Single Progressbar  -->
-                                        <div class="col-lg-6 col-md-6 col-12 mt_sm--60">
-                                            <div class="progress-wrapper">
-                                                <div class="content">
-                                                    <span class="subtitle">Features</span>
-                                                    <h4 class="maintitle">Web Desing and Development and Software
-                                                        Development</h4>
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">HTML/CSS/Bootstrap/Tailwind CSS
-                                                        </h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.5s" data-wow-delay=".3s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">Node JS/ Express JS</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.6s" data-wow-delay=".4s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">React JS</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.7s" data-wow-delay=".5s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">Win Form Applications</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.8s" data-wow-delay=".6s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                    <!-- Start Single Progress Charts -->
-                                                    <div class="progress-charts">
-                                                        <h6 class="heading heading-h6">Mongo Db and Sql server</h6>
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow fadeInLeft"
-                                                                data-wow-duration="0.9s" data-wow-delay=".7s"
-                                                                role="progressbar" style="width: 90%" aria-valuenow="85"
-                                                                aria-valuemin="0" aria-valuemax="100"><span
-                                                                    class="percent-label">90%</span></div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single Progress Charts -->
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Progressbar  -->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab  -->
-
-                            <!-- Start Single Tab  -->
-                            <div class="tab-pane fade" id="certificate" role="tabpanel"
-                                aria-labelledby="certificate-tab">
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row">
-                                        <!-- Start Skill List Area 2nd  -->
-                                        <div class="col-lg-12 col-md-12 col-12 mt_md--60 mt_sm--60">
-                                            <div class="content">
-                                                <span class="subtitle">2018-2022</span>
-                                                <h4 class="maintitle">Certificates</h4>
-                                                <div class="experience-list">
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>HTML5 and CSS3</h4>
-                                                                    <span>Pirple (Issued Feb 2022)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>ID # 13011788</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Intermediate Python</h4>
-                                                                    <span>DataCamp (Apr 2020)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>ID # v1otxscs9p</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Front and Back end</h4>
-                                                                    <span>Desired Technology (Jan 2020 - Apr
-                                                                        2020)</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">I studied front end technologies and
-                                                                backend technologies from here. I learned php and react.
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab  -->
-
-                            <!-- Start Single Tab  -->
-                            <div class="tab-pane fade" id="interview" role="tabpanel" aria-labelledby="interview-tab">
-                                <div class="personal-experience-inner mt--40">
-                                    <div class="row">
-                                        <!-- Start Skill List Area  -->
-                                        <div class="col-lg-6 col-md-12 col-12">
-                                            <div class="content">
-                                                <span class="subtitle">2007 - 2010</span>
-                                                <h4 class="maintitle">Company Experience</h4>
-                                                <div class="experience-list">
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300"
-                                                        data-aos-once="true" class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Personal Portfolio April Fools</h4>
-                                                                    <span>University of DVI (1997 - 2001)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.30/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">The education should be very
-                                                                interactual. Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500"
-                                                        data-aos-once="true" class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4> Examples Of Personal Portfolio</h4>
-                                                                    <span>College of Studies (2000 - 2002)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.50/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Maecenas finibus nec sem ut
-                                                                imperdiet. Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="700"
-                                                        data-aos-once="true" class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Tips For Personal Portfolio</h4>
-                                                                    <span>University of Studies (1997 - 2001)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.80/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description"> If you are going to use a passage.
-                                                                Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-
-                                        <!-- Start Skill List Area 2nd  -->
-                                        <div class="col-lg-6 col-md-12 col-12 mt_md--60 mt_sm--60">
-                                            <div class="content">
-                                                <span class="subtitle">2007 - 2010</span>
-                                                <h4 class="maintitle">Job Experience</h4>
-                                                <div class="experience-list">
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="500"
-                                                        data-aos-once="true" class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Diploma in Web Development</h4>
-                                                                    <span>BSE In CSE (2004 - 2008)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.70/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Contrary to popular belief. Ut
-                                                                tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="700"
-                                                        data-aos-once="true" class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>The Personal Portfolio Mystery</h4>
-                                                                    <span>Job at Rainbow-Themes (2008 - 2016)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>4.95/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Generate Lorem Ipsum which looks. Ut
-                                                                tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                    <!-- Start Single List  -->
-                                                    <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="900"
-                                                        data-aos-once="true" class="resume-single-list">
-                                                        <div class="inner">
-                                                            <div class="heading">
-                                                                <div class="title">
-                                                                    <h4>Diploma in Computer Science</h4>
-                                                                    <span>Works at Plugin Development (2016 -
-                                                                        2020)</span>
-                                                                </div>
-                                                                <div class="date-of-time">
-                                                                    <span>5.00/5</span>
-                                                                </div>
-                                                            </div>
-                                                            <p class="description">Maecenas finibus nec sem ut
-                                                                imperdiet. Ut tincidunt est ac dolor aliquam sodales.
-                                                                Phasellus sed mauris hendrerit, laoreet sem in, lobortis
-                                                                mauris hendrerit ante.</p>
-                                                        </div>
-                                                    </div>
-                                                    <!-- End Single List  -->
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Skill List Area  -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Tab  -->
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Resume Area -->
-
-        <!-- Start Testimonia Area  -->
-        <div class="rn-testimonial-area rn-section-gap section-separator" id="testimonial">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" data-aos-once="true"
-                            class="section-title text-center">
-                            <span class="subtitle">What Clients Say</span>
-                            <h2 class="title">Testimonial</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" data-aos-once="true">
-                    <div class="col-lg-12">
-                        <div class="testimonial-activation testimonial-pb mb--30">
-                            <!-- Start Single testiminail -->
-                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
-                                <div class="inner">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="./images/testimonial/final-home--1st.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <span class="subtitle mt--10">Response Alert</span>
-                                            <h3 class="title">Brandon</h3>
-                                            <span class="designation">Marketing manager at Response Alert</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-description">
-                                        <div class="title-area">
-                                            <div class="title-info">
-                                                <h3 class="title">Web Development</h3>
-                                                <span class="date">Oct 30, 2022</span>
-                                            </div>
-                                            <div class="rating">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                            </div>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            I must say, working with Muhammad has quite literally been the best
-                                            experience in my entire professional career. He understands every single
-                                            aspect of full website development from ground zero. His communication
-                                            skills are amazing! Response times are basically when you put your phone
-                                            down. We went into making this site with just a simple conversion of a
-                                            Squarespace AI-made site, to the same kinda deal but coded to an AWS server.
-                                            He made the most sophisticated fully automated, payment APIs, Shipping APIs,
-                                            even connected our Zoho Subscription form API. I truly cannot say enough
-                                            about Muhammad. I would quite literally sit here and write a book about how
-                                            amazing his service has been!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single testiminail -->
-                            <!-- Start Single testiminail -->
-                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
-                                <div class="inner">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="./images/testimonial/final-home--1st.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <span class="subtitle mt--10">Adspot</span>
-                                            <h3 class="title">Andrew Nepo</h3>
-                                            <span class="designation">CEO Of Adspot</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-description">
-                                        <div class="title-area">
-                                            <div class="title-info">
-                                                <h3 class="title">Web Development</h3>
-                                                <span class="date">Oct 23, 2022</span>
-                                            </div>
-                                            <div class="rating">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                            </div>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            Perfect job, great seller. Serious and precise I recommend it to everyone
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single testiminail -->
-                            <!-- Start Single testiminail -->
-                            <div class="testimonial mt--50 mt_md--40 mt_sm--40">
-                                <div class="inner">
-                                    <div class="card-info">
-                                        <div class="card-thumbnail">
-                                            <img src="./images/testimonial/final-home--1st.png" alt="Testimonial-image">
-                                        </div>
-                                        <div class="card-content">
-                                            <span class="subtitle mt--10">Kunshuis</span>
-                                            <h3 class="title">Hajer Manai</h3>
-                                            <span class="designation">Owner of Kunshuis</span>
-                                        </div>
-                                    </div>
-                                    <div class="card-description">
-                                        <div class="title-area">
-                                            <div class="title-info">
-                                                <h3 class="title">Web Development</h3>
-                                                <span class="date">June 08, 2022</span>
-                                            </div>
-                                            <div class="rating">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                                <img src="./images/icons/rating.png" alt="rating-image">
-                                            </div>
-                                        </div>
-                                        <div class="seperator"></div>
-                                        <p class="discription">
-                                            It's a fantastic service I love the working with the seller. I recommended
-                                            to work with him.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--End Single testiminail -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Testimonia Area  -->
-
-        <!-- Pricing Area -->
-        <div class="rn-pricing-area rn-section-gap section-separator" id="pricing">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-xl-5 mb_md--40 mb_sm--40 small-margin-pricing">
-                        <div
-                            class="d-block d-lg-flex text-center d-lg-left section-flex flex-wrap align-content-start h-100">
-                            <div class="position-sticky sticky-top rbt-sticky-top-adjust">
-                                <div class="section-title text-left">
-                                    <span class="subtitle text-center text-lg-left">Pricing</span>
-                                    <h2 class="title text-center text-lg-left">My Pricing</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-8 col-xl-7">
-                        <!-- Pricing Area -->
-                        <div class="navigation-wrapper">
-                            <ul class="nav " id="myTab" role="tablist">
-                                <li class="nav-item ">
-                                    <a class="nav-style" id="test-tab" data-toggle="tab" href="#test" role="tab"
-                                        aria-controls="test" aria-selected="false">Static</a>
-                                </li>
-
-                                <li class="nav-item  recommended">
-                                    <a class="nav-style active" id="profile-tab" data-toggle="tab" href="#profile"
-                                        role="tab" aria-controls="profile" aria-selected="true">Standard</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-style" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-                                        aria-controls="contact" aria-selected="false">Premium</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="myTabContent">
-
-                                <div class="tab-pane fade " id="test" role="tabpanel" aria-labelledby="test-tab">
-                                    <!-- Pricing Start -->
-                                    <div class="rn-pricing">
-                                        <div class="pricing-header">
-                                            <div class="header-left">
-                                                <h2 class="title">Make You a Single Page</h2>
-                                                <span>Front End Development</span>
-                                            </div>
-                                            <div class="header-right">
-                                                <span>$15.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="pricing-body">
-                                            <p class="description">
-                                                I will design 1 responsive webpages using html, css, js and bootstrap
-                                            </p>
-                                            <div class="check-wrapper">
-                                                <div class="left-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Fully Responsive Web Site</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Custom Development (html css bootstrap) </p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Cross browser compatibility</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Source code</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Social Media Integration </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pricing-footer">
-                                            <a href="#" class="rn-btn d-block">
-                                                <span>ORDER NOW</span>
-                                                <i data-feather="arrow-right"></i>
-                                            </a>
-                                            <div class="time-line">
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="clock"></i>
-                                                    <span>1 Days Delivery</span>
-                                                </div>
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="activity"></i>
-                                                    <span>Unlimited Revisions</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End -->
-                                </div>
-
-                                <div class="tab-pane fade show active" id="profile" role="tabpanel"
-                                    aria-labelledby="profile-tab">
-                                    <!-- Pricing Start -->
-                                    <div class="rn-pricing">
-                                        <div class="pricing-header">
-                                            <div class="header-left">
-                                                <h2 class="title">Make you 4 Pages</h2>
-                                                <span>Front and Back end development</span>
-                                            </div>
-                                            <div class="header-right">
-                                                <span>$100.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="pricing-body">
-                                            <p class="description">
-                                                I will design 4 responsive web pages with simple Back end
-                                            </p>
-                                            <div class="check-wrapper">
-                                                <div class="left-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Fully Responsive Web Site</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Custom Development (html css bootstrap) </p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Cross browser compatibility</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Source code</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Social Media Integration </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pricing-footer">
-                                            <a href="#" class="rn-btn d-block">
-                                                <span>ORDER NOW</span>
-                                                <i data-feather="arrow-right"></i>
-                                            </a>
-                                            <div class="time-line d-flex">
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="clock"></i>
-                                                    <span>3 to 5 Days Delivery</span>
-                                                </div>
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="activity"></i>
-                                                    <span>Unlimited Revisions</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End -->
-                                </div>
-
-                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                    <!-- Pricing Start -->
-                                    <div class="rn-pricing">
-                                        <div class="pricing-header">
-                                            <div class="header-left">
-                                                <h2 class="title">Full functional website</h2>
-                                                <span>Front and Back end development</span>
-                                            </div>
-                                            <div class="header-right">
-                                                <span>$500.00</span>
-                                            </div>
-                                        </div>
-                                        <div class="pricing-body">
-                                            <p class="description">
-                                                Professionally Design Fully Responsive Website with all features and
-                                                functionality.
-                                            </p>
-                                            <div class="check-wrapper">
-                                                <div class="left-area">
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Fully Responsive Web Site</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Custom Development (html css bootstrap) </p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Back end Development </p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Cross browser compatibility</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Source code</p>
-                                                    </div>
-                                                    <div class="check d-flex">
-                                                        <i data-feather="check"></i>
-                                                        <p>Social Media Integration </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="pricing-footer">
-                                            <a href="#" class="rn-btn d-block">
-                                                <span>ORDER NOW</span>
-                                                <i data-feather="arrow-right"></i>
-                                            </a>
-                                            <div class="time-line d-flex">
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="clock"></i>
-                                                    <span>10 Days Delivery</span>
-                                                </div>
-                                                <div class="single-cmt d-flex">
-                                                    <i data-feather="activity"></i>
-                                                    <span>Unlimited Revisions</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- pricing area -->
-
-        <!-- Start Contact section -->
-        <div class="rn-contact-area rn-section-gap section-separator" id="contacts">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-title text-center">
-                            <span class="subtitle">Contact</span>
-                            <h2 class="title">Contact With Me</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt--50 mt_md--40 mt_sm--40 mt-contact-sm">
-                    <div class="col-lg-12">
-                        <div class="contact-about-area">
-                            <div class="thumbnail">
-                                <img src="./images/contact/contact1.jpg" alt="contact-img">
-                            </div>
-                            <div class="title-area">
-                                <h4 class="title">Muhammad Rizwan</h4>
-                                <span>Web and Software Developer</span>
-                            </div>
-                            <div class="description">
-                                <p>I am available for freelance work. Connect with me via message and call in to my
-                                    account.
-                                </p>
-                                <span class="phone">Phone: <a href="tel:01941043264">+923091435290</a></span>
-                                <span class="mail">Email: <a
-                                        href="mailto:admin@example.com">rizwanramzan826@gmail.com</a></span>
-                            </div>
-                            <div class="social-area">
-                                <div class="name">FIND WITH ME</div>
-                                <div class="social-icone">
-                                    <ul class="social-share d-flex liststyle">
-                                        <li class="facebook"><a
-                                                href="https://www.facebook.com/profile.php?id=100043181080105"><i
-                                                    data-feather="facebook"></i></a>
-                                        </li>
-                                        <li class="instagram"><a href="https://www.instagram.com/rizwan_ramzan0/"><i
-                                                    data-feather="instagram"></i></a>
-                                        </li>
-                                        <li class="linkedin"><a
-                                                href="https://www.linkedin.com/in/rizwan-ramzan-46bbba201/"><i
-                                                    data-feather="linkedin"></i></a>
-                                        </li>
-                                        <li class="whatsapp">
-                                            <a href="https://api.whatsapp.com/send?phone=923091435290">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-                                                </svg>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Contuct section -->
-
-        <!-- Back to  top Start -->
-        <div class="backto-top">
-            <div>
-                <i data-feather="arrow-up"></i>
-            </div>
-        </div>
-        <!-- Back to top end -->
-
-    </main>
-
-    <!-- Start Footer Area -->
-    <div class="rn-footer-area rn-section-gap section-separator">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-area text-center">
-                        <p class="description mt--30">© 2021. All rights reserved by Me</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- PHOTO -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo-ring"></div>
+      <img class="hero-photo" src="data:image/jpeg;base64,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" alt="Rizwan Ramzan — Full Stack Engineer">
     </div>
-    <!-- End Footer Area -->
+  </div>
+</section>
 
-    <!-- JS ============================================ -->
-    <script src="./js/vendor/jquery.js"></script>
-    <script src="./js/vendor/modernizer.min.js"></script>
-    <script src="./js/vendor/feather.min.js"></script>
-    <script src="./js/vendor/slick.min.js"></script>
-    <script src="./js/vendor/bootstrap.js"></script>
-    <script src="./js/vendor/text-type.js"></script>
-    <script src="./js/vendor/wow.js"></script>
-    <script src="./js/vendor/aos.js"></script>
-    <script src="./js/vendor/particles.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
-        integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- main JS -->
-    <script src="./js/main.js"></script>
+<!-- SERVICES -->
+<div class="sec-full" id="services">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">What I Do</div>
+      <h2 class="sec-h">Services I Offer</h2>
+      <p class="sec-sub">End-to-end digital solutions — from idea to production-ready product.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-icon">💻</div>
+        <div class="svc-title">Custom Software Development</div>
+        <div class="svc-desc">Tailored solutions designed specifically for your business processes — CRM systems, ERP solutions, internal tools, and enterprise applications.</div>
+        <div class="svc-tags"><span class="svc-tag">CRM</span><span class="svc-tag">ERP</span><span class="svc-tag">Enterprise Apps</span><span class="svc-tag">Internal Tools</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <div class="svc-title">Web Development</div>
+        <div class="svc-desc">Modern, fast, and SEO-friendly web applications built with React, Next.js, Node.js, and scalable database architecture.</div>
+        <div class="svc-tags"><span class="svc-tag">React</span><span class="svc-tag">Next.js</span><span class="svc-tag">Node.js</span><span class="svc-tag">MongoDB</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
+        <div class="svc-title">AI Solutions & Automation</div>
+        <div class="svc-desc">Leverage AI to automate operations — intelligent chatbots, AI agents, workflow automation, data processing, and LLM integrations.</div>
+        <div class="svc-tags"><span class="svc-tag">AI Agents</span><span class="svc-tag">Chatbots</span><span class="svc-tag">Automation</span><span class="svc-tag">LLMs</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🏥</div>
+        <div class="svc-title">Healthcare Software</div>
+        <div class="svc-desc">HIPAA-compliant telemedicine platforms, patient portals, e-prescription systems, and healthcare API integrations (Surescripts, DoseSpot).</div>
+        <div class="svc-tags"><span class="svc-tag">HIPAA</span><span class="svc-tag">Telehealth</span><span class="svc-tag">EHR</span><span class="svc-tag">Surescripts</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
+        <div class="svc-title">SaaS Development</div>
+        <div class="svc-desc">End-to-end SaaS product development — multi-tenant architecture, subscription management, Stripe integration, analytics dashboards.</div>
+        <div class="svc-tags"><span class="svc-tag">SaaS</span><span class="svc-tag">Multi-tenant</span><span class="svc-tag">Stripe</span><span class="svc-tag">Analytics</span></div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">📱</div>
+        <div class="svc-title">Mobile App Development</div>
+        <div class="svc-desc">Cross-platform mobile applications with real-time notifications, secure authentication, payment integration, GPS, and chat systems.</div>
+        <div class="svc-tags"><span class="svc-tag">React Native</span><span class="svc-tag">iOS</span><span class="svc-tag">Android</span><span class="svc-tag">Payments</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sec-full" id="experience">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">Work History</div>
+      <h2 class="sec-h">Experience</h2>
+    </div>
+    <div class="tl">
+      <div class="tli">
+        <div class="tl-period">2025 — Present</div>
+        <div class="tl-role">Independent Consultant & Freelance Engineer</div>
+        <div class="tl-co">Self-Employed · Global Clients (Upwork)</div>
+        <div class="tl-txt">Building customized digital solutions for clients worldwide. Long-term partnerships including ChinesePod LLC (gamified Chinese learning platform) and TestPod (AI-powered ERP tutoring platform with Admin, Tutor & Student portals).</div>
+        <div class="tl-chips"><span class="tl-chip">React</span><span class="tl-chip">Node.js</span><span class="tl-chip">AI Integration</span><span class="tl-chip">MongoDB</span><span class="tl-chip">Upwork</span></div>
+      </div>
+      <div class="tli">
+        <div class="tl-period">2023 — 2025</div>
+        <div class="tl-role">Full Stack Software Engineer</div>
+        <div class="tl-co">Webwrites</div>
+        <div class="tl-txt">Led development of healthcare and telehealth platforms with full HIPAA compliance. Built nested form builders, dynamic apps, and integrations with Surescripts, DoseSpot, Human APIs, and LegitScript.</div>
+        <div class="tl-chips"><span class="tl-chip">HIPAA</span><span class="tl-chip">React</span><span class="tl-chip">Node.js</span><span class="tl-chip">Healthcare APIs</span><span class="tl-chip">TypeScript</span></div>
+      </div>
+      <div class="tli">
+        <div class="tl-period">2022 — 2023</div>
+        <div class="tl-role">Full Stack Engineer</div>
+        <div class="tl-co">UXH</div>
+        <div class="tl-txt">Developed modern web applications using the MERN stack. Built scalable frontend and backend solutions, RESTful APIs, and optimized application performance across multiple products.</div>
+        <div class="tl-chips"><span class="tl-chip">MongoDB</span><span class="tl-chip">Express.js</span><span class="tl-chip">React</span><span class="tl-chip">Node.js</span></div>
+      </div>
+      <div class="tli">
+        <div class="tl-period">2021 — 2022</div>
+        <div class="tl-role">Front-end Engineer Executive</div>
+        <div class="tl-co">Pikes Soft</div>
+        <div class="tl-txt">React developer on Almana General Hospital Maintenance and E-workshop web applications. Worked with Redux Toolkit, Redux Saga, Ant Design, and Umijs.</div>
+        <div class="tl-chips"><span class="tl-chip">React</span><span class="tl-chip">Redux Toolkit</span><span class="tl-chip">Ant Design</span><span class="tl-chip">Redux Saga</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="sec-full" id="skills">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">Technical Stack</div>
+      <h2 class="sec-h">Skills & Technologies</h2>
+    </div>
+    <div class="sk-grid">
+      <div class="sk-group"><div class="sk-label">Frontend</div><div class="sk-chips"><span class="sk-chip">React.js</span><span class="sk-chip">Next.js</span><span class="sk-chip">Vue.js</span><span class="sk-chip">TypeScript</span><span class="sk-chip">Tailwind</span><span class="sk-chip">Ant Design</span><span class="sk-chip">Redux</span><span class="sk-chip">GSAP</span></div></div>
+      <div class="sk-group"><div class="sk-label">Backend</div><div class="sk-chips"><span class="sk-chip">Node.js</span><span class="sk-chip">Express.js</span><span class="sk-chip">REST APIs</span><span class="sk-chip">GraphQL</span><span class="sk-chip">Python</span><span class="sk-chip">PHP</span></div></div>
+      <div class="sk-group"><div class="sk-label">Database & Cloud</div><div class="sk-chips"><span class="sk-chip">MongoDB</span><span class="sk-chip">PostgreSQL</span><span class="sk-chip">MySQL</span><span class="sk-chip">Redis</span><span class="sk-chip">AWS</span><span class="sk-chip">Firebase</span></div></div>
+      <div class="sk-group"><div class="sk-label">Specializations</div><div class="sk-chips"><span class="sk-chip">HIPAA Compliance</span><span class="sk-chip">AI Integration</span><span class="sk-chip">Healthcare APIs</span><span class="sk-chip">SaaS Architecture</span><span class="sk-chip">Telehealth</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="sec-full" id="portfolio">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">Portfolio</div>
+      <h2 class="sec-h">Featured Projects</h2>
+      <p class="sec-sub">Real products built for real clients across industries.</p>
+    </div>
+    <div class="port-grid">
+      <div class="port-card"><div class="port-cat">Healthcare · Telemedicine</div><div class="port-name">Telemedline</div><div class="port-desc">Complete telemedicine solution with video calls, chat, e-prescriptions, HIPAA compliance, and patient management portal.</div></div>
+      <div class="port-card"><div class="port-cat">E-Learning · AI</div><div class="port-name">TestPod Platform</div><div class="port-desc">ERP-style tutoring platform with Admin, Tutor & Student portals, AI-powered quiz generation, and Stripe payment processing.</div></div>
+      <div class="port-card"><div class="port-cat">EdTech · Gamification</div><div class="port-name">ChinesePod Quiz v3</div><div class="port-desc">Interactive Chinese language learning game with stroke animations, Web Speech API voice narration, and adaptive quiz mechanics.</div></div>
+      <div class="port-card"><div class="port-cat">AI · Customer Support</div><div class="port-name">AI Support Platform</div><div class="port-desc">AI-powered customer support system that automates interactions, reduces operational costs, and integrates with existing CRMs.</div></div>
+      <div class="port-card"><div class="port-cat">SaaS · Business</div><div class="port-name">SaaS Business Platform</div><div class="port-desc">Subscription-based SaaS application with analytics, multi-user management, Stripe billing, and role-based access control.</div></div>
+      <div class="port-card"><div class="port-cat">E-Commerce</div><div class="port-name">Shop Nuvv</div><div class="port-desc">Scalable online marketplace supporting multiple vendors, Stripe payments, inventory management, and admin dashboard.</div></div>
+      <div class="port-card"><div class="port-cat">FinTech</div><div class="port-name">RQMB Books</div><div class="port-desc">Financial management platform for accounting, bookkeeping, invoicing, and business reporting at scale.</div></div>
+      <div class="port-card"><div class="port-cat">Social · Wellness</div><div class="port-name">PsyUp</div><div class="port-desc">Mental wellness social platform and online community with peer support, professional connections, and content sharing.</div></div>
+      <div class="port-card"><div class="port-cat">Logistics</div><div class="port-name">Nonly — Chauffeur System</div><div class="port-desc">Fleet and chauffeur management with real-time tracking, booking management, and driver dispatch automation.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div class="sec-full" id="why">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">Why Work With Me</div>
+      <h2 class="sec-h">What Sets Me Apart</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><span class="why-icon">🎯</span><div class="why-title">Client-Focused</div><div class="why-desc">I work closely with clients throughout the entire project lifecycle, not just during development.</div></div>
+      <div class="why-card"><span class="why-icon">⚡</span><div class="why-title">Fast Delivery</div><div class="why-desc">Efficient development process without compromising on code quality or product stability.</div></div>
+      <div class="why-card"><span class="why-icon">🔒</span><div class="why-title">Secure by Default</div><div class="why-desc">Industry-standard security practices, HIPAA compliance, and data protection built in from day one.</div></div>
+      <div class="why-card"><span class="why-icon">📈</span><div class="why-title">Built to Scale</div><div class="why-desc">Architecture designed for future growth and long-term success, not just the current requirements.</div></div>
+      <div class="why-card"><span class="why-icon">🤝</span><div class="why-title">Long-Term Partner</div><div class="why-desc">I invest in understanding your business. Many clients return for follow-on work and ongoing support.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- INDUSTRIES -->
+<div class="sec-full">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">Industries</div>
+      <h2 class="sec-h">Industries I Serve</h2>
+    </div>
+    <div class="ind-chips">
+      <span class="ind-chip">🏥 Healthcare</span><span class="ind-chip">💰 Fintech</span><span class="ind-chip">📦 SaaS</span><span class="ind-chip">🛒 E-Commerce</span><span class="ind-chip">🎓 Education</span><span class="ind-chip">🚚 Logistics</span><span class="ind-chip">🏠 Real Estate</span><span class="ind-chip">💪 Sports & Fitness</span><span class="ind-chip">🚀 Startups</span><span class="ind-chip">🏢 Enterprise</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="sec-full" id="process">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">How I Work</div>
+      <h2 class="sec-h">Development Process</h2>
+      <p class="sec-sub">A structured approach that ensures quality, clarity, and on-time delivery.</p>
+    </div>
+    <div class="process-row">
+      <div class="proc-step"><div class="proc-num">01</div><div class="proc-title">Discovery</div><div class="proc-desc">Understanding your business goals, users, and technical requirements.</div></div>
+      <div class="proc-step"><div class="proc-num">02</div><div class="proc-title">Planning</div><div class="proc-desc">Architecture design, tech stack selection, and project roadmap creation.</div></div>
+      <div class="proc-step"><div class="proc-num">03</div><div class="proc-title">Development</div><div class="proc-desc">Building with clean, scalable code using modern technologies and best practices.</div></div>
+      <div class="proc-step"><div class="proc-num">04</div><div class="proc-title">Testing</div><div class="proc-desc">Rigorous QA for quality, performance, security, and cross-device compatibility.</div></div>
+      <div class="proc-step"><div class="proc-num">05</div><div class="proc-title">Deployment</div><div class="proc-desc">Smooth, zero-downtime launch with monitoring and documentation.</div></div>
+      <div class="proc-step"><div class="proc-num">06</div><div class="proc-title">Support</div><div class="proc-desc">Ongoing maintenance, feature additions, and continuous improvements.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="sec-full">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">Client Feedback</div>
+      <h2 class="sec-h">What Clients Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-text">Professional, reliable, and highly skilled. Rizwan delivered exactly what we needed, on time and with excellent communication throughout.</div><div class="testi-stars">★★★★★</div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-text">Excellent technical expertise and outstanding communication. He understood our complex healthcare requirements and delivered a HIPAA-compliant product.</div><div class="testi-stars">★★★★★</div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-text">The project was completed on time and exceeded our expectations. We've continued working with Rizwan on additional features and highly recommend him.</div><div class="testi-stars">★★★★★</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="cta">
+  <h2>Ready To Build Your Next Project?</h2>
+  <p>Let's discuss your idea and turn it into a successful digital product. Free consultation — no commitment.</p>
+  <a href="#contact" class="btn-white">📅 Book a Free Consultation</a>
+</div>
+
+<!-- CONTACT -->
+<div class="sec-full" id="contact">
+  <div class="sec-inner">
+    <div class="sec-head">
+      <div class="eyebrow">Get In Touch</div>
+      <h2 class="sec-h">Let's Talk</h2>
+      <p class="sec-sub">Available for freelance projects, long-term partnerships, and consulting.</p>
+    </div>
+    <div class="contact-wrap">
+      <div>
+        <div class="ci"><div class="ci-icon">📧</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:rizwanramzan826@gmail.com">rizwanramzan826@gmail.com</a></div></div></div>
+        <div class="ci"><div class="ci-icon">📱</div><div><div class="ci-label">Phone / WhatsApp</div><div class="ci-val"><a href="tel:+923091435290">+92 309 1435290</a></div></div></div>
+        <div class="ci"><div class="ci-icon">💼</div><div><div class="ci-label">Upwork Profile</div><div class="ci-val"><a href="https://www.upwork.com/freelancers/~017322c0ca472efe23?viewMode=1" target="_blank">View Full Profile ↗</a></div></div></div>
+        <div class="ci"><div class="ci-icon">🔗</div><div><div class="ci-label">LinkedIn</div><div class="ci-val"><a href="https://www.linkedin.com/in/rizwan-ramzan/" target="_blank">linkedin.com/in/rizwan-ramzan ↗</a></div></div></div>
+        <div class="ci"><div class="ci-icon">📍</div><div><div class="ci-label">Location</div><div class="ci-val">Lahore, Pakistan &nbsp;·&nbsp; Available Worldwide (Remote)</div></div></div>
+      </div>
+      <div class="cf">
+        <div class="form-row2">
+          <div class="fg"><label>Name</label><input type="text" placeholder="Your name" id="cN"></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" id="cE"></div>
+        </div>
+        <div class="fg"><label>Subject</label><input type="text" placeholder="Project inquiry" id="cS"></div>
+        <div class="fg"><label>Message</label><textarea placeholder="Tell me about your project, goals, and timeline..." id="cM"></textarea></div>
+        <button class="sub-btn" onclick="sendMsg()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="border-top:1px solid var(--border);padding:2rem 6%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;max-width:1200px;margin:0 auto;">
+  <div>
+    <div class="footer-logo">Rizwan Ramzan</div>
+    <div style="color:var(--muted);font-size:.75rem;margin-top:.25rem;">Full Stack Engineer · AI Solutions · Healthcare · SaaS</div>
+  </div>
+  <div class="footer-copy">© 2026 Rizwan Ramzan. All Rights Reserved.</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// Hero
+gsap.from('.hero-eyebrow',{opacity:0,y:20,duration:.8,delay:.2});
+gsap.from('.hero-h',{opacity:0,y:30,duration:.9,delay:.35});
+gsap.from('.hero-sub',{opacity:0,y:20,duration:.8,delay:.5});
+gsap.from('.hero-stats',{opacity:0,y:20,duration:.7,delay:.62});
+gsap.from('.hero-cta',{opacity:0,y:20,duration:.7,delay:.75});
+gsap.from('.hero-socials',{opacity:0,y:15,duration:.7,delay:.88});
+gsap.from('.hero-photo-wrap',{opacity:0,x:50,duration:1,delay:.3});
+gsap.to('.hero-photo',{y:-12,duration:4,yoyo:true,repeat:-1,ease:'sine.inOut'});
+
+// Stats counter
+document.querySelectorAll('[data-count]').forEach(el=>{
+  const t=parseInt(el.dataset.count);
+  ScrollTrigger.create({trigger:el,onEnter:()=>{
+    gsap.to({v:0},{v:t,duration:1.5,ease:'power2.out',onUpdate:function(){el.textContent=Math.round(this.targets()[0].v)+'+';}});
+  },once:true});
+});
+
+// Scroll reveals
+gsap.utils.toArray('.svc-card,.port-card,.why-card,.testi-card,.sk-group,.proc-step,.tli').forEach((el,i)=>{
+  gsap.from(el,{opacity:0,y:28,duration:.65,delay:(i%3)*.09,scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+});
+gsap.utils.toArray('.ci,.ind-chip').forEach((el,i)=>{
+  gsap.from(el,{opacity:0,x:-18,duration:.55,delay:i*.05,scrollTrigger:{trigger:el,start:'top 90%',once:true}});
+});
+gsap.utils.toArray('.sec-h,.eyebrow').forEach(el=>{
+  gsap.from(el,{opacity:0,y:16,duration:.6,scrollTrigger:{trigger:el,start:'top 92%',once:true}});
+});
+
+// Theme
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const h=document.documentElement,dark=h.dataset.theme==='dark';
+  h.dataset.theme=dark?'light':'dark';
+  document.getElementById('themeToggle').textContent=dark?'☀️':'🌙';
+});
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',()=>{
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+function closeMob(){document.getElementById('mobileNav').classList.remove('open');}
+
+// Contact
+function sendMsg(){
+  const n=document.getElementById('cN').value.trim();
+  const e=document.getElementById('cE').value.trim();
+  const s=document.getElementById('cS').value.trim();
+  const m=document.getElementById('cM').value.trim();
+  if(!n||!e||!m){alert('Please fill in name, email and message.');return;}
+  window.location.href=`mailto:rizwanramzan826@gmail.com?subject=${encodeURIComponent(s||'Project Inquiry — Portfolio')}&body=${encodeURIComponent('Name: '+n+'\nEmail: '+e+'\n\n'+m)}`;
+}
+</script>
 </body>
-
-
-<!-- Mirrored from rainbowit.net/html/inbio/index-white-version.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 13 Aug 2021 22:34:57 GMT -->
-
 </html>
